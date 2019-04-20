@@ -24,7 +24,7 @@ public class Main {
         while((read=System.in.read(buf))>0) {
             command=new String(buf,0,read).replace("\n","");
             System.out.println("start"+(System.currentTimeMillis()-start));
-            if (command.equals("intern")) {
+            if (command.startsWith("intern")) {
 
                 for (int i = 0; i < 10; ++i) {
                     List<String> strings = StringInternProblem.generateStringIntern();
@@ -33,7 +33,7 @@ public class Main {
                 System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if (command.equals("noIntern")) {
+            if (command.startsWith("noIntern")) {
 
                 for (int i = 0; i < 10; ++i) {
                     List<String> strings = StringInternProblem.generateStringNoIntern();
@@ -42,40 +42,45 @@ public class Main {
                 System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if (command.equals("stringConcat")) {
+            if (command.startsWith("stringConcat")) {
 
                 String s = StringConcatProblem.testStringConcat();
                 gcRoot.add(s);
                 System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if (command.equals("stringBuilderConcat")) {
+            if (command.startsWith("stringBuilderConcat")) {
 
                 String s = StringConcatProblem.testStringBuilderConcat();
                 gcRoot.add(s);
                 System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if (command.equals("finalizer")) {
+            if (command.startsWith("finalizer")) {
 
                 FinalizerProblem.testFinalizer();
+                System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if (command.equals("noFinalizer")) {
+            if (command.startsWith("noFinalizer")) {
 
                 FinalizerProblem.testFinalizerSafe();
+                System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if(command.equals("intergerLoop")){
+            if(command.startsWith("intergerLoop")){
                 IntergerCausedInfinateLoop.testInfinateLoop(false);
+                System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if(command.equals("intergerInfinateLoop")){
+            if(command.startsWith("intergerInfinateLoop")){
                 IntergerCausedInfinateLoop.testInfinateLoop(true);
+                System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
-            if(command.equals("doubleInfinateLoop")){
+            if(command.startsWith("doubleInfinateLoop")){
                 DoubleCausedInfinateLoop.testLoop();
+                System.out.println("done"+(System.currentTimeMillis()-start));
             }
 
             System.out.println("finish handle");
