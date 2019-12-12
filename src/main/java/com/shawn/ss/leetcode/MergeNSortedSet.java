@@ -21,45 +21,6 @@ public class MergeNSortedSet {
 //        }
     }
 
-    /**
-     * Definition for singly-linked list.
-     */
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        static ListNode buildListNode(int[] args) {
-            ListNode root = null, cur = null;
-            if (args != null) {
-                for (int i : args) {
-                    ListNode node = new ListNode(i);
-                    if (root == null) {
-                        root = node;
-                        cur = node;
-                    } else {
-                        cur.next = node;
-                        cur = node;
-                    }
-                }
-            }
-            return root;
-        }
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        static String toList(ListNode n) {
-            if (n == null) return "";
-            StringBuilder builder = new StringBuilder();
-            do {
-                builder.append(n.val).append("->");
-                n = n.next;
-            } while (n != null);
-            return builder.toString();
-        }
-    }
-
     static class Solution {
         public ListNode mergeKLists(ListNode[] lists) {
             if(lists==null ){
