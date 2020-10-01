@@ -29,9 +29,10 @@
 
 原理：java的integer存在常量池，默认范围为-128到127，此部分整数不会生成新实例，因此Integer i=1;Integer j=1;
 i==j会返回true，但是超过此范围的Integer会分配新的内存，所以导致Integer i=256;Integer j=256;i==j会返回false
-因为指针地址不相同
+因为指针地址不相同, 
 
 部分优化策略推荐增大整数常量池的范围来优化GC，减少由于整数分配新内存产生的GC压力，此方案可以尝试
+使用-Djava.lang.Integer.IntegerCache.high=512可以将常量池上限扩大到512,常量池下限为-127， java8中不可调整
 
 
 
