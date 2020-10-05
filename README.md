@@ -32,7 +32,7 @@ i==j会返回true，但是超过此范围的Integer会分配新的内存，所�
 因为指针地址不相同, 
 
 部分优化策略推荐增大整数常量池的范围来优化GC，减少由于整数分配新内存产生的GC压力，此方案可以尝试
-使用-Djava.lang.Integer.IntegerCache.high=512可以将常量池上限扩大到512,常量池下限为-127， java8中不可调整
+使用-Djava.lang.Integer.IntegerCache.high=512可以将常量池上限扩大到512,常量池下限为-128， java8中不可调整
 
 
 
