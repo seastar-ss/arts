@@ -1,4 +1,4 @@
-package com.shawn.ss.leetcode;
+package com.shawn.ss.interview_code;
 
 
 // Definition for singly-linked list.
@@ -14,6 +14,13 @@ public class Solution {
             next = null;
         }
     }
+
+    /**
+     * 1->2->3->4->...->n-2->n-1->n
+     * 转换为
+     * 1->n->2->n-1->3->n-2->4->....
+     * @param args
+     */
 
     public static void main(String args[]) {
         ListNode root = new ListNode(0);

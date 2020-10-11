@@ -2,7 +2,7 @@ package com.shawn.ss.leetcode;
 
 import java.util.Arrays;
 
-public class QuickFindMid {
+public class QuickFindMid_ {
 
     public static void main(String[] args) {
         int[] a1 = {1, 2, 3, 4, 9, 19, 23};
