@@ -34,6 +34,14 @@ public class LinkedListSort {
 //        return head;
 //    }
 
+    private ListNode getTail(ListNode n) {
+        if (n == null) return null;
+        while (n.next != null) {
+            n = n.next;
+        }
+        return n;
+    }
+
     private static ListNode qsortLinkedList(ListNode head, ListNode tail) {
         if (head != null && tail != null && head != tail) {
             ListNode cur = head;
@@ -76,29 +84,6 @@ public class LinkedListSort {
                         state = 0;
                     }
                 }
-//                while (start.val < cur.val) {
-//                    start = start.next;
-//                    if (start == end) {
-//                        break;
-//                    }
-//                }
-//                cur=start;
-//                while (end.val >= cur.val) {
-//                    end = end.prev;
-//                    if (start == end) {
-//                        break;
-//                    }
-//                }
-
-//                if (start != end) {
-//                    swap(start, end);
-//                } else {
-//                    if (start.val < cur) {
-//                        swap(start, head);
-//                    } else {
-////                        swap(start.prev, head);
-//                    }
-//                }
             }
             System.out.println(ListNode.toList(head, tail));
             if (cur.prev != null && cur.prev != head && cur != head)
