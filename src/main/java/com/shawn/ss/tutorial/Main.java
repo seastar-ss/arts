@@ -25,7 +25,7 @@ public class Main {
         byte[] buf = new byte[256];
         while ((read = System.in.read(buf)) > 0) {
             command = new String(buf, 0, read).replace("\n", "");
-            System.out.println("start" + (System.currentTimeMillis() - start));
+            System.out.println("start "+command+" "+ (System.currentTimeMillis() - start));
             if (command.startsWith("intern")) {
 
                 for (int i = 0; i < 10; ++i) {

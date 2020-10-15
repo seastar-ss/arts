@@ -2,6 +2,10 @@ package com.shawn.ss.leetcode;
 
 import java.util.*;
 
+/**
+ * https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/
+ * https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/
+ */
 public class PutNextToBinaryTreeLevel {
 
 
