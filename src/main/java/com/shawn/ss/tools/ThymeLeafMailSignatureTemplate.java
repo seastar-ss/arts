@@ -4,8 +4,8 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+import java.io.FileWriter;
 import java.util.Locale;
-
 
 
 public class ThymeLeafMailSignatureTemplate {
@@ -14,11 +14,11 @@ public class ThymeLeafMailSignatureTemplate {
         private Integer signType;
         private Long signId;
         private boolean showAppVipTag;
-        private  String detailUrl;
-        private  String  name;
+        private String detailUrl;
+        private String name;
         private String title;
         private String company;
-        private  String email;
+        private String email;
         private String mobile;
         private String location;
         private UserAddItem[] userAddItem;
@@ -159,7 +159,7 @@ public class ThymeLeafMailSignatureTemplate {
         }
     }
 
-    static class UserAddItem{
+    static class UserAddItem {
         String item;
 
         public UserAddItem(String item) {
@@ -177,8 +177,7 @@ public class ThymeLeafMailSignatureTemplate {
     }
 
     public static void main(String[] args) {
-        HtmlLayoutObj data=new HtmlLayoutObj()
-                .setSignType(3)
+        HtmlLayoutObj data = new HtmlLayoutObj()
                 .setNeedHtml(true)
                 .setDetailUrl("http://su-desktop-web.cowork.netease.com/static_html/signature.html?id=843166956887261")
                 .setProfilePhoto("https://nos.netease.com/qiyeimage/head/3993514503636077/mail80x80.jpg?timestamp=1619598965185")
@@ -194,17 +193,38 @@ public class ThymeLeafMailSignatureTemplate {
                         new UserAddItem("这是一条添加的自定义备注信息"),
                         new UserAddItem("这是另一条添加的比较长的自定义备注信息这是另一条添加的比较长的自定义备注信息"),
                         new UserAddItem("object Test English <+Message_<>"),
-                })
-                ;
+                });
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
         resolver.setPrefix("templates/");
         resolver.setTemplateMode("HTML5");
         resolver.setSuffix(".html");
         TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(resolver);
-        Context context = new Context(Locale.UK);
-        context.setVariable("data",data);
-        final String contentMessage = templateEngine.process("signature_template_both", context);
-        System.out.println(contentMessage);
+        for (int i = 1; i <= 3; ++i) {
+            for (int j = 0; j < 2; ++j) {
+                data.setSignType(i);
+                data.setShowAppVipTag(j == 0);
+                Context context = new Context(Locale.CHINESE);
+                context.setVariable("data", data);
+                final String contentMessage = templateEngine.process("signature_template", context);
+                stringToFile(contentMessage, "template-" + i + j + "html.html");
+                context = new Context(Locale.CHINESE);
+                context.setVariable("data", data);
+                final String contentMessageDiv = templateEngine.process("signature_template_without_html_tag", context);
+                System.out.println("done for " + i + "-" + j);
+                stringToFile(contentMessage, "template-" + i + j + "div.html");
+            }
+        }
+    }
+
+    public static void stringToFile(String content, String fileName) {
+        try {
+            FileWriter wr = new FileWriter(fileName);
+            wr.write(content);
+            wr.flush();
+            wr.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
