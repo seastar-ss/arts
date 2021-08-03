@@ -10,6 +10,7 @@ import java.util.Locale;
 
 public class ThymeLeafMailSignatureTemplate {
     static class HtmlLayoutObj {
+        private boolean needHtml;
         private Integer signType;
         private Long signId;
         private boolean showAppVipTag;
@@ -147,6 +148,15 @@ public class ThymeLeafMailSignatureTemplate {
             this.signId = signId;
             return this;
         }
+
+        public boolean isNeedHtml() {
+            return needHtml;
+        }
+
+        public HtmlLayoutObj setNeedHtml(boolean needHtml) {
+            this.needHtml = needHtml;
+            return this;
+        }
     }
 
     static class UserAddItem{
@@ -168,15 +178,15 @@ public class ThymeLeafMailSignatureTemplate {
 
     public static void main(String[] args) {
         HtmlLayoutObj data=new HtmlLayoutObj()
-                .setSignType(1)
-
+                .setSignType(3)
+                .setNeedHtml(true)
                 .setDetailUrl("http://su-desktop-web.cowork.netease.com/static_html/signature.html?id=843166956887261")
                 .setProfilePhoto("https://nos.netease.com/qiyeimage/head/3993514503636077/mail80x80.jpg?timestamp=1619598965185")
                 .setName("王一博")
                 .setTitle("高级UI设计师")
                 .setCompany("杭州网易竹书信息技术有限公司北京分公司灵犀事业部设计组")
                 .setEmail("songzibo@office.163.com")
-                .setMobile("15828646276")
+                .setMobile(null)
                 .setLocation("北京市海淀区西北旺东路10号院中关村软件园二期西区7号")
                 .setSignId(1002020100123L)
                 .setShowAppVipTag(true)
@@ -194,7 +204,7 @@ public class ThymeLeafMailSignatureTemplate {
         templateEngine.setTemplateResolver(resolver);
         Context context = new Context(Locale.UK);
         context.setVariable("data",data);
-        final String contentMessage = templateEngine.process("signature_template", context);
+        final String contentMessage = templateEngine.process("signature_template_both", context);
         System.out.println(contentMessage);
     }
 }
