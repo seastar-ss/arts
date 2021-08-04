@@ -8,8 +8,9 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 </head>
 <body style="width: 100%;margin: 0; padding: 0" th:object="${data}">
-<!-- 样式一，完整版 -->
+
 <div class="lingxi-signature-container">
+    <!-- 样式一，完整版 -->
     <a id="lingxi-signature-block" th:if="*{signType==3 || signType==1}"
        style="display: block;width: 100%;position: relative;text-decoration: none;text-underline: none;"
        th:href="*{detailUrl}">
@@ -39,7 +40,7 @@
                      th:text="*{mobile}"></div>
                 <div style="border: none;margin-bottom:10px;text-underline: none;" itemid="location" th:if="*{location}"
                      th:text="*{location}"></div>
-                <th:block th:if="*{userAddItem && userAddItem.length>0}" th:each="item:${userAddItem}">
+                <th:block th:if="*{userAddItem!=null && userAddItem.length>0}" th:each="item:*{userAddItem}">
                     <div style="border: none;margin-bottom:10px;text-underline: none;" itemid="email"
                          th:if="${item.item}" th:text="${item.item}"></div>
                 </th:block>
@@ -48,10 +49,10 @@
     </a>
     <!-- 样式二，无头像 -->
     <a id="lingxi-signature-v2-block" th:if="*{signType}==2"
-       style="display: block;width: 100%;padding-right: 10px;text-decoration: none;text-underline: none;"
+       style="display: block;width: 100%;text-decoration: none;text-underline: none;"
        href="*{detailUrl}">
         <div id="lingxi-signature-v2-content" itemid="id" th:attr="itemprop=*{signId}"
-             th:style="*{showAppVipTag}?'border-bottom: 1px solid rgba(38, 42, 51, 0.08);width: 100%;font-size: 14px;line-height: 16px;color: #7D8085;padding-bottom:4px; margin: 16px; ':'width: 100%;font-size: 14px;line-height: 16px;color: #7D8085;padding-bottom:4px; margin: 16px; '"
+             th:style="*{showAppVipTag}?'border-bottom: 1px solid rgba(38, 42, 51, 0.08);width: 100%;font-size: 14px;line-height: 16px;color: #7D8085;padding: 16px 16px 4px 4px;margin-left: 16px;':'width: 100%;font-size: 14px;line-height: 16px;color: #7D8085;padding: 16px 16px 4px 4px;margin-left: 16px;'"
              style=""
         >
             <div style="color: #262A33;border: none;margin-bottom:10px;font-size: 16px;text-underline: none;"
@@ -67,16 +68,17 @@
                  th:text="*{mobile}"></div>
             <div style="border: none;margin-bottom:10px;text-underline: none;" itemid="location" th:if="*{location}"
                  th:text="*{location}"></div>
-            <th:block th:if="*{userAddItem && userAddItem.length>0}" th:each="item:${userAddItem}">
-                <div style="border: none;margin-bottom:10px;text-underline: none;" itemid="email" th:if="${item.item}"
+            <th:block th:if="*{userAddItem!=null && userAddItem.length>0}" th:each="item:*{userAddItem}">
+                <div style="border: none;margin-bottom:10px;text-underline: none;" itemprop="additional" th:if="${item.item}"
                      th:text="${item.item}"></div>
             </th:block>
         </div>
     </a>
-    <div th:style="*{signType}==2?'padding-left:16px;color: #A8AAAD;font-size: 12px;margin-top: 12px':'padding-left:68px;color: #A8AAAD;font-size: 12px;margin-top: 12px'"
+    <!--办公品牌-->
+    <div th:style="*{signType}==2?'padding-left:16px;color: #A8AAAD;font-size: 12px;margin-top: 12px;margin-bottom:12px;':'padding-left:68px;color: #A8AAAD;font-size: 12px;margin-top: 12px;margin-bottom:12px;'"
          th:if="*{showAppVipTag}">
         签名由
-        <a href="https://hubble.netease.com/sl/aaagLd" style="color:#386EE7;display: inline;text-underline: none;">网易灵犀办公</a>
+        <a href="https://hubble.netease.com/sl/aaagLd" style="color:#386EE7;display: inline-block;text-underline: none;text-decoration: none;">网易灵犀办公</a>
         定制
     </div>
 </div>
