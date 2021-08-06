@@ -210,12 +210,12 @@ public class ThymeLeafMailSignatureTemplate {
                 Context context = new Context(Locale.CHINESE);
                 context.setVariable("data", data);
                 final String contentMessage = templateEngine.process("signature_template", context);
-                stringToFile(contentMessage, "template-" + i + j + "html.html");
+                stringToFile(contentMessage, "/Users/shishengb18701shishengcorp.netease.com/Documents/project/workProject/sirius-desktop/packages/web-ui/static_html/test/template-" + i + j + "html.html");
                 context = new Context(Locale.CHINESE);
                 context.setVariable("data", data);
                 final String contentMessageDiv = templateEngine.process("signature_template_without_html_tag", context);
                 System.out.println("done for " + i + "-" + j);
-                stringToFile(contentMessage, "template-" + i + j + "div.html");
+                stringToFile(contentMessage, "/Users/shishengb18701shishengcorp.netease.com/Documents/project/workProject/sirius-desktop/packages/web-ui/static_html/test/template-" + i + j + "div.html");
             }
         }
     }
