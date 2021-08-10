@@ -182,20 +182,20 @@ public class ThymeLeafMailSignatureTemplate {
                 .setDetailUrl("http://su-desktop-web.cowork.netease.com/static_html/signature.html?id=843166956887261")
                 .setProfilePhoto("https://nos.netease.com/qiyeimage/head/3993514503636077/mail80x80.jpg?timestamp=1619598965185")
                 .setName("王一博")
-//                .setTitle("高级UI设计师")
-                .setTitle(null)
-//                .setCompany("杭州网易竹书信息技术有限公司北京分公司灵犀事业部设计组")
-                .setCompany(null)
+                .setTitle("高级UI设计师")
+//                .setTitle(null)
+                .setCompany("杭州网易竹书信息技术有限公司北京分公司灵犀事业部设计组")
+//                .setCompany(null)
                 .setEmail("songzibo@office.163.com")
-                .setMobile(null)
-//                .setLocation("北京市海淀区西北旺东路10号院中关村软件园二期西区7号")
-                .setLocation(null)
+//                .setMobile(null)
+                .setLocation("北京市海淀区西北旺东路10号院中关村软件园二期西区7号")
+//                .setLocation(null)
                 .setSignId(1002020100123L)
                 .setShowAppVipTag(false)
                 .setUserAddItem(new UserAddItem[]{
-//                        new UserAddItem("这是一条添加的自定义备注信息"),
-//                        new UserAddItem("这是另一条添加的比较长的自定义备注信息这是另一条添加的比较长的自定义备注信息"),
-//                        new UserAddItem("object Test English <+Message_<>"),
+                        new UserAddItem("这是一条添加的自定义备注信息"),
+                        new UserAddItem("这是另一条添加的比较长的自定义备注信息这是另一条添加的比较长的自定义备注信息"),
+                        new UserAddItem("object Test English <+Message_<>"),
                 });
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
         resolver.setPrefix("templates/");
